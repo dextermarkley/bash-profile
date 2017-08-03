@@ -1,0 +1,14 @@
+export PATH="/opt/chefdk/embedded/bin:${HOME}/.chefdk/gem/ruby/2.1.0/bin:$PATH"
+alias switch_creds='/Users/dextermarkley/r/tools/switch_creds.rb'
+alias src='source ~/.bash_profile'
+source ~/.aws_creds
+gitAdd() {
+  branch=$(git branch |grep "*" |awk '{ print $2 }')
+  git add --all && git commit --fixup $branch && git rebase -i --autosquash && git push origin $branch --force
+}
+alias git_add=gitAdd
+myIp() {
+  echo $(curl -s api.ipify.org)/32
+}  
+alias my_ip=myIp
+
